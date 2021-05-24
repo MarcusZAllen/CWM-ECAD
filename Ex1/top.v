@@ -9,7 +9,7 @@
 //
 //  a | b | out
 // -----------------
-//  0 | 0 | func[0] - Closed
+//  0 | 0 | func [0] - Closed
 //  0 | 1 | func [1] - Quarter open
 //  1 | 0 | func [2] - Half open
 //  1 | 1 | func [3] - Fully open
@@ -32,6 +32,6 @@ module blinds(
     
     wire   out;
          
-      //Todo: add you logic here
-
+    assign ab = {a,b};
+    assign out = func[ab];
 endmodule
