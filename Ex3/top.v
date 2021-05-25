@@ -28,7 +28,7 @@ module monitor (
     );
                     
     //registers and wires, if needed
-    reg rst, clk, change, on_off, counter_out;
+    reg rst, clk, change, on_off;
     wire out;
     
     //Todo: add user logic
