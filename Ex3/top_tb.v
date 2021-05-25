@@ -21,10 +21,9 @@ module top_tb(
     reg change;
     reg on_off;
     reg rst;
-    reg [7:0]counter_out;
+    wire [7:0]counter_out;
     reg [7:0]counter_out_prev;
     reg err;
-    wire [7:0]out;
 
     //Clock generation
     initial
@@ -37,36 +36,35 @@ module top_tb(
 //Todo: User logic
     initial begin
        rst=0;
-       counter_out_prev=counter_out;
+       counter_out_prev=0;
        err=0;
        change=0;
-       counter_out=0;
        on_off=0;
        #5
        forever begin
-	 if (rst==1 & counter_out!=0)
+	 if (rst==1 && counter_out!=0)
          begin
            $display("***TEST FAILED! counter is not 0 when rst is 1!");
            err=1;
          end
          #6
-	 if (change==0 & counter_out_prev!=counter_out)
+	 if (change==0 && counter_out_prev!=counter_out)
 	   begin
            $display("***TEST FAILED! when change is 0 counter still changes!");
            err=1;
 	   end
 	 else
-		if (on_off==1 & counter_out_prev!=counter_out-1)
+		if (on_off==1 && counter_out_prev!=counter_out-1)
 		begin
 		$display("***TEST FAILED! when On_off is 1 counter does not increase!");
 		err=1;
 		end
-		if (on_off==0 & counter_out_prev!=counter_out+1)
+		if (on_off==0 && counter_out_prev!=counter_out+1)
 		begin
 		$display("***TEST FAILED! when On_off is 0 counter does not decrease!");
 		err=1;
 		end
-	    end
+	    
 	 //counter_out_prev=counter_out;
          //counter_out=counter_out+1;
        end
@@ -80,5 +78,11 @@ module top_tb(
         $finish;
       end	
 //Todo: Instantiate counter module
+	monitor top (
+	     .rst (rst),
+	     .change (change),
+	     .on_off (on_off),
+	     .counter_out (counter_out)
+	     );
  
 endmodule 

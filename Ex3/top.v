@@ -20,15 +20,14 @@
 
 module monitor (
     //ports
-    input clk;
-    input rst;
-    input change;
-    input on_off;
-    output reg[7:0] counter_out; 
+    input clk,
+    input rst,
+    input change,
+    input on_off,
+    output reg[7:0] counter_out 
     );
                     
     //registers and wires, if needed
-    reg rst, clk, change, on_off;
     wire out;
     
     //Todo: add user logic
