@@ -33,9 +33,9 @@ module top_tb(
 //Todo: User logic
     initial begin
        rst=0;
-       colour_prev=5;
+       colour_prev=0;
        err=0;
-       button=0;
+       button=1;
        
        #(CLK_PERIOD)
        rst=1;
@@ -57,7 +57,7 @@ module top_tb(
            err=1;
          end
 	 else
-	 if (button==0 && colour!=colour_prev)
+	 if ((button==0 && colour!=colour_prev) && (colour_prev!=7 || colour_prev!=0))
 	   begin
            $display("***TEST FAILED! when button is not pressed LED colour still changes!");
            err=1;
@@ -68,14 +68,15 @@ module top_tb(
 	   	 $display("***TEST FAILED! colour does not change to 001 from 110!");	
 	   	 err=1;
 	   	end
+	 if(button == 1)
 		if (colour_prev<6 && colour!=colour_prev+1)
-		 begin
+		begin
 		 $display("***TEST FAILED! when colour doesn't increase by 1!");
 		 err=1;
 		end
 	    
 	 colour_prev=colour;
-       end
+        end
     end
 
 //Todo: Finish test, check for success
