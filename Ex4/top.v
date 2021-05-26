@@ -30,16 +30,21 @@ module LED (
     begin
     if (rst==1)
 	colour<=0; 
-    else 
-    	if (colour == 0 || colour == 7)
+    if (rst==0)
+	if (button == 0 && (colour==7 || colour==0))
 		colour<=1;
 	if (button == 1)
-		if (colour == 6)
+		if (colour==6 || colour==7)
 			colour<=1;
 		else
 			colour <= colour+1;
+		//if (colour < 6)
+			//colour<=colour + 1;
+		//else
+			//colour<=1;
     	else 
 		colour <= colour;
+	
     end
 
 endmodule
