@@ -33,9 +33,9 @@ module top_tb(
 //Todo: User logic
     initial begin
        rst=0;
-       colour_prev=0;
+       colour_prev=5;
        err=0;
-       button=1;
+       button=0;
        
        #(CLK_PERIOD)
        rst=1;
@@ -44,7 +44,7 @@ module top_tb(
        rst=0;
        
        forever begin
-	 #(CLK_PERIOD-2)
+	 #(CLK_PERIOD)
 	 if (rst==1)
 	 begin
 	   $display("***TEST FAILED! colour should be 0 when rst is 1");

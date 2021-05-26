@@ -29,10 +29,12 @@ module LED (
     always @(posedge clk)
     begin
     if (rst==1)
-	colour<=0; 
+	colour<=0;
+    else 
     if (rst==0)
 	if (button == 0 && (colour==7 || colour==0))
 		colour<=1;
+	else
 	if (button == 1)
 		if (colour==6 || colour==7)
 			colour<=1;
