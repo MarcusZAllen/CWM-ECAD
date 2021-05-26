@@ -33,54 +33,54 @@ module top_tb(
 //Todo: User logic
     initial begin
        rst=0;
-       colour_prev=0;
+       colour_prev=5;
        err=0;
        button=1;
        
-       #5
-       //rst=1;
-       //#5
-       //rst=0;
-       //forever begin
-	 //if (rst==1)
-	 //begin
-	 //$display("***TEST FAILED! colour should be 0 when rst is 1");
-	 //err=1;
-	 //end
+       #(CLK_PERIOD)
+       rst=1;
+       #(CLK_PERIOD)
+       rst=0;
+       
+	forever begin
+	 if (rst==1)
+	 begin
+	 $display("***TEST FAILED! colour should be 0 when rst is 1");
+	 err=1;
+	 end
 	 
-	 //if (colour_prev==0 || colour_prev==7 && colour!=1)
-         //begin
-         //$display("***TEST FAILED! colour is not 1 when  colour was is 0 or 7!");
-         //err=1;
-         //#6;
-         //end
-	 //else
-	 	//if (button==0 && colour!=colour_prev)
-	   	//begin
-           	//$display("***TEST FAILED! when button is not pressed LED colour still changes!");
-           	//err=1;
-	   	//end
-		//else // i.e button == 1
-		//	if (colour_prev==6 && colour!=1)
-		//	begin
-		//	$display("***TEST FAILED! colour does not change to 001 from 110!");
-		//	err=1;
-		//	end
-		//	else 
-		//	     if (colour!=colour_prev+1)
-		//	     begin
-		//	     $display("***TEST FAILED! when colour doesn't increase by 1!");
-		//		err=1;
-		//	      end
+	 if (colour_prev==0 || colour_prev==7 && colour!=1)
+         begin
+         $display("***TEST FAILED! colour is not 1 when colour was 0 or 7!");
+         err=1;
+         end
+	 else
+	 	if (button==0 && colour!=colour_prev)
+	   	begin
+           	$display("***TEST FAILED! when button is not pressed LED colour still changes!");
+           	err=1;
+	   	end
+		else // i.e button == 1
+			if (colour_prev==6 && colour!=1)
+			begin
+			$display("***TEST FAILED! colour does not change to 001 from 110!");
+			err=1;
+			end
+			else 
+			     if (colour!=colour_prev+1)
+			     begin
+			     $display("***TEST FAILED! when colour doesn't increase by 1!");
+			     err=1;
+			     end
 	    
-	 //colour_prev=colour;
+	 colour_prev=colour;
          //counter_out=counter_out+1;
-       //end
+       end
     end
 
 //Todo: Finish test, check for success
     initial begin
-        #50
+        #(CLK_PERIOD*5)
         if (err==0)
           $display("***TEST PASSED! :) ***");
         $finish;
