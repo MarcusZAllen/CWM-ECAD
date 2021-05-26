@@ -32,9 +32,14 @@ module top_tb(
     
      //Stimulus logic
      initial begin
-	temp<=15;
-        err<=0;
-       #(CLK_PERIOD)
+	temp=15;
+        err=0;
+        #(CLK_PERIOD)
+	temp=21;
+        #(CLK_PERIOD)
+	temp=25;
+	#(CLK_PERIOD)
+	temp=19;
        forever begin
          #(CLK_PERIOD)
 	 if (h==1 && c==1)
