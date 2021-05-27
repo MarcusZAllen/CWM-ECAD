@@ -37,43 +37,52 @@ module top_tb(
 		#(CLK_PERIOD)
 		if (colour==0)
 			if (rgb!=24'h000000)
+			begin
 			$display("***TEST FAILED! :( ***");
 			err=1;
-		#(CLK_PERIOD)
+			end
 		if (colour==1)
 			if (rgb!=24'h0000FF)
+			begin
 			$display("***TEST FAILED! :( ***");
 			err=1;
-		#(CLK_PERIOD)
+			end
 		if (colour==2)
 			if (rgb!=24'h00FF00)
+			begin
 			$display("***TEST FAILED! :( ***");
 			err=1;
-		#(CLK_PERIOD)
+			end
 		if (colour==3)
 			if (rgb!=24'h0000FF)
+			begin
 			$display("***TEST FAILED! :( ***");
 			err=1;
-		#(CLK_PERIOD)
+			end
 		if (colour==4)
 			if (rgb!=24'hFF0000)
+			begin
 			$display("***TEST FAILED! :( ***");
 			err=1;
-		#(CLK_PERIOD)
+			end
 		if (colour==5)
 			if (rgb!=24'hFF00FF)
+			begin
 			$display("***TEST FAILED! :( ***");
 			err=1;
-		#(CLK_PERIOD)
+			end
 		if (colour==6)
 			if (rgb!=24'hFFFF00)
+			begin
 			$display("***TEST FAILED! :( ***");
 			err=1;
-		#(CLK_PERIOD)
+			end
 		if (colour==1)
 			if (rgb!=24'hFFFFFF)
+			begin
 			$display("***TEST FAILED! :( ***");
 			err=1;
+			end
 		
 		colour = colour+1;
 	end
