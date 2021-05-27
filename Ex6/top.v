@@ -18,9 +18,8 @@ module converter(
 	input wire clk,
 	input wire colour[2:0],
 	input wire enable,
-	output wire rgb[23:0],
+	output wire rgb[23:0]
 );
-
 blk_mem_gen_0 top1(
   .clka(clk),    // input wire clka
   .ena(enable),      // input wire ena
