@@ -14,4 +14,19 @@
 //           rgb [23:0]
 //
 //////////////////////////////////////////////////////////////////////////////////
+module converter(
+	input wire clk,
+	input wire colour[2:0],
+	input wire enable,
+	output wire rgb[23:0],
 
+blk_mem_gen_0 top1(
+  .clka(clk),    // input wire clka
+  .ena(enable),      // input wire ena
+  .wea(1'b0),      // input wire [0 : 0] wea
+  .addra(colour),  // input wire [2 : 0] addra
+  .dina(24'h0),    // input wire [23 : 0] dina
+  .douta(rbg)  // output wire [23 : 0] douta
+);
+
+	
