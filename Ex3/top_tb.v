@@ -41,6 +41,8 @@ module top_tb(
        change=0;
        on_off=0;
        #5
+       rst=1;
+       counter_out_prev=1;
        forever begin
 	 if (rst==1 && counter_out!=0)
          begin
