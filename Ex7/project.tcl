@@ -19,6 +19,9 @@ create_fileset -constrset -quiet constraints
 
 #Todo: Add your IP here
 
+read_verilog "multiplexer"
+read_verilog "converter.v"
+read_verilog "LED.v"
 read_verilog "top.v"
 read_verilog "top_tb.v"
 

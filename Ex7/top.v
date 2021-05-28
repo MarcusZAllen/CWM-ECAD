@@ -22,24 +22,15 @@ module selector(
 	output [23:0] light
 );
 
-LED top1 (
-  .clk      ( clk  ), // clk
-  .rst      ( rst  ), // input 
-  .button   (button), // input  
-  .colour   (colour)  // output [2:0]
-);
+//logic
+	wire [2:0] colour;
+	wire [23:0] rgb;
 
-converter top2 (
-  .clk      ( clk  ), // input
-  .enable   (enable), // input 
-  .colour   (colour), // input  [2:0]
-  .rgb      ( rgb  )  // output [23:0]
-);
+    	assign light = sel?  {rgb}:
+		24'hFFFFFF;
 
-multiplexer top3 (
-  .rgb      ( rgb  ), // input [23:0]
-  .sel      ( sel  ), // input 
-  .light  ( data_temp )  // output [23:0]
-);
+LED LED_0(clk,rst,button,colour);
+
+converter rgb_converter (clk,!rst,colour,rgb);
 
 endmodule
