@@ -18,7 +18,11 @@ module top(
     input clk_n,
      //Todo: add all other ports besides clk_n and clk_p 
     input rst_n,
-    input [4:0] temp,
+    input temperature_0,
+    input temperature_1,
+    input temperature_2,
+    input temperature_3,
+    input temperature_4,
     output h,
     output c
 
