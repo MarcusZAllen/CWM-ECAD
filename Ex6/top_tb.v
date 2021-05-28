@@ -33,9 +33,12 @@ module top_tb(
      initial begin
 	colour=0;
 	err=0;
-	
+	enable=0;
+	#100
+	enable=1;
 	forever begin
-		#(CLK_PERIOD)
+		#(CLK_PERIOD*2)
+		$display("colour=%d and rgb=%d enable=%d", colour, rgb,enable);
 		if (colour==0 && rgb!=24'h000000)
 		 begin
 		 $display("***TEST FAILED! :( colour=%d and rgb=%d***", colour, rgb);
