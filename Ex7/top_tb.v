@@ -70,7 +70,6 @@ module top_tb(
      .sel (sel),
      .rst (rst),
      .button (button),
-     .rgb (rgb),
      .light (light)
      );
      
