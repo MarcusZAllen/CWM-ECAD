@@ -20,6 +20,7 @@ module top_tb(
     reg button;
     reg rst;
     reg err;
+    reg [23:0] rgb;
     wire [23:0] light;
     
     //Clock generation
@@ -40,6 +41,17 @@ module top_tb(
 	rst=1;
 	forever begin
 		#(CLK_PERIOD*2);
+		if (sel==1 && light!=rgb)
+			begin
+			$display("***TEST FAILED! :( sel= %d light=%d rgb=%d ",sel,light,rgb);
+			err=1;
+			end
+		if (sel==0 && light!=24'hFFFFFF)
+			begin
+			$display("***TEST FAILED! :( sel= %d light=%d rgb=%d ",sel,light,rgb);
+			err=1;
+			end
+			
 		
 	end
      end
@@ -53,11 +65,13 @@ module top_tb(
       end
 
     //User's module
-    converter top(
+    selector top(
      .clk (clk),
-     .colour (colour),
-     .enable (enable),
-     .rgb (rgb)
+     .sel (sel),
+     .rst (rst),
+     .button (button),
+     .rgb (rgb),
+     .light (light)
      );
      
 endmodule
