@@ -17,6 +17,11 @@ module top(
     input clk_p,
     input clk_n,
      //Todo: add all other ports besides clk_n and clk_p 
+    input rst_n,
+    input [4:0] temp,
+    output h,
+    output c
+
    );
     
 
@@ -37,5 +42,22 @@ module top(
       );
 
 //Add logic here
+wire out;
 
+//logic
+always @(posedge clk)
+    	begin
+	if (temp<=18)
+		c=0;
+		h=1;
+	if (temp>=22)
+		h=0;
+		c=1;
+	if (h==1 && temp>=20)
+		h=0;
+	if (c==1 && temp<=20)
+		c=0;
+	end
+
+endmodule
 endmodule
