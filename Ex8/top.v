@@ -41,23 +41,12 @@ module top(
 	.O  (clk)
       );
 
-//Add logic here
-wire out;
+//instantiate AC
+AC AC_0(
+	.clk (clk),
+	.temp (temp),
+	.h (h),
+	.c (c)
+);
 
-//logic
-always @(posedge clk)
-    	begin
-	if (temp<=18)
-		c=0;
-		h=1;
-	if (temp>=22)
-		h=0;
-		c=1;
-	if (h==1 && temp>=20)
-		h=0;
-	if (c==1 && temp<=20)
-		c=0;
-	end
-
-endmodule
 endmodule
